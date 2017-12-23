@@ -1,8 +1,16 @@
 # Contextual_Regression
-This project is related to paper: Contextual Regression: An Accurate and Conveniently Interpretable Nonlinear Model for Mining Discovery from Scientific Data (https://arxiv.org/abs/1710.10728)
+This project is related to paper: Contextual Regression: An Accurate and Conveniently Interpretable Nonlinear Model for Mining Discovery from Scientific Data (https://arxiv.org/abs/1710.10728), please contact chl556@ucsd.edu if you have questions.
+
+# How to Run the Histone Mark Prediction Code
+First, download the data in .bigwig format using the bash scripts *_downloadData_*.sh. Then run the program with run_tf.bash: 
+```bash
+python BAL_27_samenet_centered_h_L1_utopia.py E003 chrX,chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22 200 100 50 False 1.0 0.0 0.0001 > result.log
+```
+E003 is the ID of the cell line, chrX-chr22 is the chromosomes used as the data set separated by comma. 200 is the resolution of data in basepair and 100 is the number of bins in each data segment, 50 is the number of neighbor bins. False generates a new training and testing list while True reads in the training and testing list from the current folder. 1.0 is the dropout rate. 0.0 is the Lasso penalty parameter we put on the features. 0.0001 here is the utopia penalty parameter.
+This set up will perform computing on all chromosomes in a cell line and thus consumes a lot of computing resource. Run it on a strong computer or only use a few of the chromosomes.
 
 # Tutorial of Converting Neural Network to Contextual Regression
-Most neural network models with a vector output can be converted into contextual regression for feature analysis. Here, we use the convolutional neural network from tensorflow tutorial (https://www.tensorflow.org/tutorials/layers) to illustrate the process
+Most neural network models with a vector output can be converted into contextual regression for feature analysis. Here, we use the convolutional neural network from tensorflow tutorial (https://www.tensorflow.org/tutorials/layers) to illustrate the process.
 
 In the original tutorial, the output from the dropout wrapper is input into a fully connected neural network (dense) to generate logit for prediction as shown below:
 ```python
@@ -59,7 +67,7 @@ We compare this model with the original model from the tensorflow tutorial. Both
 
 # Caveat of Using Contextual Regression
 In the applications in our own lab, we haven't experience too many problems. In some cases, scaling of the data or the change of some hyperparameters is needed to handle the vanishing or exploding gradient problem.
-Standardizing the features is strongly recommended for the generation of sensable results (This can be easily done with the StandardScaler() from the sklearn package). In order to understand this suggestion, please consider the following situation:
+Standardizing the features is strongly recommended for the generation of sensable results (This can be easily done with the StandardScaler() from the sklearn package). Contextual regression is robust against noise of random value as we have demonstrated in the paper, but not against noise of constant large value. In order to understand this suggestion, consider the following situation:
 Suppose we have a set of data points and their corresponding target values and features that are unnormalized:
 
 | Data Points | Target Value | Feature Vector |
@@ -87,4 +95,4 @@ When we apply the contextual regression with Lasso constraint, the embedding mod
 | C           | 7                 | (3, 21, 3, -1, 999) | (0, 0, 0, 0, 7/999)   |
 | D           | -5                | (9, 0, 2, -7, 999)  | (0, 0, 0, 0, -5/999)  |
 
-Thus, this situation has yield an unusable model for interpretation and defeats the purpose of contextual regression.
+Thus, this situation has yield a model that solely focus on noise and defeats the purpose of contextual regression. Standardizing the data will greatly reduce the effect of noises with constant value since they have very low variance across data points.
