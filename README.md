@@ -2,7 +2,7 @@
 This project is related to paper: Contextual Regression: An Accurate and Conveniently Interpretable Nonlinear Model for Mining Discovery from Scientific Data (https://arxiv.org/abs/1710.10728), please contact chl556@ucsd.edu if you have questions.
 
 # How to Run the Histone Mark Prediction Code
-First, download the data in .bigwig format using the bash scripts *_downloadData_*.sh. Then run the program with run_tf.bash: 
+First, download the data in .bigwig format using the bash scripts X_downloadData_X.sh. Then run the program with run_tf.bash: 
 ```bash
 python BAL_27_samenet_centered_h_L1_utopia.py E003 chrX,chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22 200 100 50 False 1.0 0.0 0.0001 > result.log
 ```
