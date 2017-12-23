@@ -50,7 +50,7 @@ error_cost = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits
 #total lost
 loss = regularization_cost + error_cost
 ```
-We compare this model with the original model from the tensorflow tutorial. Both models are first run with learning_rate=1e-3 for 500 epochs and then learning_rate=1e-4 for 1500 epochs. At the end, they ended with very similar prediction performance. If your implementation is correct, you should get some similar numbers. We also have our version attached.
+We compare this model with the original model from the tensorflow tutorial. Both models are first run with learning_rate=1e-3 for 500 epochs and then learning_rate=1e-4 for 1500 epochs. Droprate is set to be 0.5. At the end, they ended with very similar prediction performance. If your implementation is correct, you should get some similar numbers. We also have our version attached.
 
 | Model             | Test Set Accuracy |
 | ----------------- | ----------------- |
