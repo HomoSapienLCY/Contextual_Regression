@@ -11,7 +11,12 @@ After making the above change, cd into the folder of Ground_Truth_Test_Base and 
 ```bash
 bash Run_Ground_Truth_Test.bash 10 0.7 1
 ```
-Here "10" means 10 sets of simulated data will be generated and run, "0.7" means 70% noise included in the target value y and "1" means using a complex Ground Truth function which is the one we used in the paper.
+Where "10" means 10 sets of simulated data will be generated and run, "0.7" means 70% noise included in the target value y and "1" means using a complex Ground Truth function which is the one we used in the paper.
+After the computation is finished. You can use the script Exam_All.py to calculate the RMSD of y and the context weights:
+```bash
+python Exam_All.py 0.7 200 10
+```
+Where 0.7 is the noise level, 200 and 10 are respectively the total number of epoch and simulated sets you want to include in the analysis. The program will organize the statistics into a .csv file.
 
 # How to Run the Histone Mark Prediction Code
 First, download the data in .bigwig format using the bash scripts X_downloadData_X.sh. Then run the program with run_tf.bash: 
