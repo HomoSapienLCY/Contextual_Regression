@@ -135,7 +135,7 @@ with tf.Session() as sess:
 		if epoch % save_interval == 0:
         		print("saving model at step " + str(epoch))
                 
-                	train_com_result = []
+                	train_con_result = []
                         test_con_result = []
                         train_y_result = []
                         test_y_result = []
