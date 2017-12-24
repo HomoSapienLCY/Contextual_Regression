@@ -104,7 +104,7 @@ We can train a neural network which represents a function f(x) that maps the fea
 | C           | 7                 | (3, 21, 3, -1, 999) |
 | D           | -5                | (9, 0, 2, -7, 999)  |
 
-Then, if we apply the contextual regression with Lasso constraint, the embedding model will have a global minimum when outputing (0, 0, 0, 0, f(x)/999) as context weight.
+Then, if we apply the contextual regression with Lasso constraint, the embedding model will have a global minimum when outputing (0, 0, 0, 0, f(x)/999) as context weight, which is shown in the following table:
 
 | Data Points | Target Value f(x) | Feature Vector      | Context Output        |
 | ----------- | ----------------- | ------------------- | --------------------- | 
