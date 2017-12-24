@@ -12,7 +12,7 @@ This set up will perform computing on all chromosomes in a cell line and thus co
 # Evaluation the Performance of Prediction
 You can use the script All_Online_calc.py to evaluate the prediction performance. This script will calculate the 4 evaluation metrics (Correlation, Match1, Catch1Obs and Catch1Imp) as mentioned in the paper by https://www.nature.com/articles/nbt.3157 . Simply run it with the following command:
 ```bash
-python All_Online_calc.py folder_that_contain_the_data
+python All_Online_calc.py folder_that_contains_the_data_files
 ```
 
 # Tutorial of Converting Neural Network to Contextual Regression
