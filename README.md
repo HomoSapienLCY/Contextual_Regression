@@ -9,6 +9,12 @@ python BAL_27_samenet_centered_h_L1_utopia.py E003 chrX,chr1,chr2,chr3,chr4,chr5
 E003 is the ID of the cell line, chrX-chr22 is the chromosomes used as the data set separated by comma. 200 is the resolution of data in basepair and 100 is the number of bins in each data segment, 50 is the number of neighbor bins. False generates a new training and testing list while True reads in the training and testing list from the current folder. 1.0 is the dropout rate. 0.0 is the Lasso penalty parameter we put on the features. 0.0001 here is the utopia penalty parameter.
 This set up will perform computing on all chromosomes in a cell line and thus consumes a lot of computing resource. Run it on a strong computer or only use a few of the chromosomes.
 
+# Evaluation the Performance of Prediction
+You can use the script All_Online_calc.py to evaluate the prediction performance. This script will calculate the 4 evaluation metrics (Correlation, Match1, Catch1Obs and Catch1Imp) as mentioned in the paper by https://www.nature.com/articles/nbt.3157 . Simply run it with the following command:
+```bash
+python All_Online_calc.py folder_that_contain_the_data
+```
+
 # Tutorial of Converting Neural Network to Contextual Regression
 Most neural network models with a vector output can be converted into contextual regression for feature analysis. Here, we use the convolutional neural network from tensorflow tutorial (https://www.tensorflow.org/tutorials/layers) to illustrate the process.
 
