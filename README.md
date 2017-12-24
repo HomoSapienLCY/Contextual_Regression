@@ -1,6 +1,18 @@
 # Contextual_Regression
 This project is related to paper: Contextual Regression: An Accurate and Conveniently Interpretable Nonlinear Model for Mining Discovery from Scientific Data (https://arxiv.org/abs/1710.10728), please contact chl556@ucsd.edu if you have questions.
 
+# How to Run the Simulated Data Code
+We have provided the code to run simulated data in the folder Ground_Truth_Test_Base. In order to run it, first open the file Run_Ground_Truth_Test.bash in which you will see the following line:
+```bash
+for i in `seq 1 ${nor}`; do current_path=/???/Ground_truth_noise_${noise_level}_test_${i}; mkdir ${current_path}; cp * ${current_path}; cd ${current_path}; python ${runpy} 100000 ${noise_level}; bash submit.bash; cd ${new_path}; done
+```
+The program set the path to /???/Ground_truth_noise_${noise_level}_test_${i}, so you should enter your own folder path into /???/. Then the program call "bash submit.bash" to submit the job into the cluster to have it running, so you need to change this command to whichever way you would like to run the program.
+After making the above change, cd into the folder of Ground_Truth_Test_Base and run:
+```bash
+bash Run_Ground_Truth_Test.bash 10 0.7 1
+```
+Here "10" means 10 sets of simulated data will be generated and run, "0.7" means 70% noise included in the target value y and "1" means using a complex Ground Truth function which is the one we used in the paper.
+
 # How to Run the Histone Mark Prediction Code
 First, download the data in .bigwig format using the bash scripts X_downloadData_X.sh. Then run the program with run_tf.bash: 
 ```bash
