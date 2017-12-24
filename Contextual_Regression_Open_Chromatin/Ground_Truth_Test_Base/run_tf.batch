@@ -1,0 +1,11 @@
+#!/bin/sh
+#SBATCH --job-name="Ground_Truth_noise_0.2"
+
+# added by Anaconda2 4.4.0 installer
+export PATH="/home/cliu556/anaconda2/bin:$PATH"
+
+#set cuda library path
+LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/wangcluster/cuda/8.0/lib64:/opt/wangcluster/cuda/8.0/include/"
+export LD_LIBRARY_PATH
+
+srun --gres=gpu:1 python Ground_Test.py > result.log

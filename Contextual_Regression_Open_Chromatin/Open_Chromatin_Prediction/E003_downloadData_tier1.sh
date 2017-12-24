@@ -1,0 +1,7 @@
+curl -z data/E003-H3K4me3.pval.signal.bigwig -o data/E003-H3K4me3.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K4me3.pval.signal.bigwig &
+curl -z data/E003-H3K4me1.pval.signal.bigwig -o data/E003-H3K4me1.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K4me1.pval.signal.bigwig &
+curl -z data/E003-H3K27ac.pval.signal.bigwig -o data/E003-H3K27ac.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K27ac.pval.signal.bigwig &
+curl -z data/E003-H3K27me3.pval.signal.bigwig -o data/E003-H3K27me3.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K27me3.pval.signal.bigwig &
+curl -z data/E003-H3K9me3.pval.signal.bigwig -o data/E003-H3K9me3.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K9me3.pval.signal.bigwig &
+curl -z data/E003-H3K9ac.pval.signal.bigwig -o data/E003-H3K9ac.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K9ac.pval.signal.bigwig &
+curl -z data/E003-H3K36me3.pval.signal.bigwig -o data/E003-H3K36me3.pval.signal.bigwig http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E003-H3K36me3.pval.signal.bigwig &
