@@ -97,7 +97,7 @@ Suppose we have a set of data points and their corresponding target values and f
 
 We can train a neural network which represents a function f(x) that maps the feature vectors to their corresponding target value of the data point. Now suppose we add a noise feature that has value 999 in all the data points:
 
-| Data Points | Target Value f(x) | Feature Vector      |
+| Data Points | Target Value f(x) | Feature Vector (x)  |
 | ----------- | ----------------- | ------------------- | 
 | A           | 5                 | (1, 11, 5, 8, 999)  |
 | B           | 8                 | (4, 41, 2, -3, 999) |
@@ -106,7 +106,7 @@ We can train a neural network which represents a function f(x) that maps the fea
 
 Then, if we apply the contextual regression with Lasso constraint, the embedding model will have a global minimum when outputing (0, 0, 0, 0, f(x)/999) as context weight, which is shown in the following table:
 
-| Data Points | Target Value f(x) | Feature Vector      | Context Output        |
+| Data Points | Target Value f(x) | Feature Vector (x)  | Context Output        |
 | ----------- | ----------------- | ------------------- | --------------------- | 
 | A           | 5                 | (1, 11, 5, 8, 999)  | (0, 0, 0, 0, 5/999)   |
 | B           | 8                 | (4, 41, 2, -3, 999) | (0, 0, 0, 0, 8/999)   |
