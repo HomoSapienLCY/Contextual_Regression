@@ -7,11 +7,13 @@ We have provided the code to run simulated data in the folder Ground_Truth_Test_
 for i in `seq 1 ${nor}`; do current_path=/???/Ground_truth_noise_${noise_level}_test_${i}; mkdir ${current_path}; cp * ${current_path}; cd ${current_path}; python ${runpy} 100000 ${noise_level}; bash submit.bash; cd ${new_path}; done
 ```
 The program set the path to /???/Ground_truth_noise_${noise_level}_test_${i}, so you should enter your own folder path into /???/. Then the program call "bash submit.bash" to submit the job into the cluster to have it running, so you need to change this command to whichever way you would like to run the program.
+
 After making the above change, cd into the folder of Ground_Truth_Test_Base and run:
 ```bash
 bash Run_Ground_Truth_Test.bash 10 0.7 1
 ```
 Where "10" means 10 sets of simulated data will be generated and run, "0.7" means 70% noise included in the target value y and "1" means using a complex Ground Truth function which is the one we used in the paper.
+
 After the computation is finished. You can use the script Exam_All.py to calculate the RMSD of y and the context weights:
 ```bash
 python Exam_All.py 0.7 200 10
@@ -24,6 +26,7 @@ First, download the data in .bigwig format using the bash scripts X_downloadData
 python BAL_27_samenet_centered_h_L1_utopia.py E003 chrX,chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22 200 100 50 False 1.0 0.0 0.0001 > result.log
 ```
 E003 is the ID of the cell line, chrX-chr22 is the chromosomes used as the data set separated by comma. 200 is the resolution of data in basepair and 100 is the number of bins in each data segment, 50 is the number of neighbor bins. False generates a new training and testing list while True reads in the training and testing list from the current folder. 1.0 is the dropout rate. 0.0 is the Lasso penalty parameter we put on the features. 0.0001 is the utopia penalty parameter.
+
 This set up will perform computing on all chromosomes in a cell line and thus consumes a lot of computing resource. I would recommend run it on a strong computer or only use a few of the chromosomes.
 
 # Evaluation the Performance of Prediction
@@ -92,7 +95,9 @@ We compare this model with the original model from the tensorflow tutorial. Both
 I listed some caveats for you to avoid, so that you won't get frustrated using my method and write a long complaining letter to you grandma and your grandma give me a 5 hours phone call about her concerns :)
 
 During the applications in our own lab, we experienced a few problems, which are, in some cases, scaling of the data or the change of some hyperparameters is needed to resolve the vanishing or exploding gradient. Reducing the number of neurons or applying regularization on the weights in the network are recommended. This practice can reduce the flexibility of the embedding function and make the results more robust and succinct.
+
 Standardizing the features is strongly recommended for the generation of sensable results (This can be easily done with the StandardScaler() from the sklearn package). Contextual regression is robust against noise of random value as we have demonstrated in the paper, but not against noise of constant large value. In order to understand this suggestion, consider the following situation:
+
 Suppose we have a set of data points and their corresponding target values and features that are unnormalized:
 
 | Data Points | Target Value | Feature Vector |
