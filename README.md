@@ -91,7 +91,7 @@ We compare this model with the original model from the tensorflow tutorial. Both
 | CNN (TF tutorial) | 99.14%            |
 | CNN (CR)          | 99.16%            |
 
-# Caveat of Using Contextual Regression
+# Tips of Using Contextual Regression
 I listed some caveats for you to avoid, so that you won't get frustrated using my method and write a long complaining letter to you grandma and your grandma give me a 5 hours phone call about her concerns :)
 
 In some cases, scaling of the data or the change of some hyperparameters is needed to resolve the vanishing or exploding gradient. Reducing the number of neurons or applying regularization on the weights in the network is recommended. This practice can reduce the flexibility of the embedding function and make the results more robust and succinct.
