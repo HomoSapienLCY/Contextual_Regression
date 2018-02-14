@@ -96,33 +96,4 @@ I listed some caveats for you to avoid, so that you won't get frustrated using m
 
 In some cases, scaling of the data or the change of some hyperparameters is needed to resolve the vanishing or exploding gradient. Reducing the number of neurons or applying regularization on the weights in the network is recommended. This practice can reduce the flexibility of the embedding function and make the results more robust and succinct.
 
-Standardizing the features is strongly recommended for the generation of sensable results (This can be easily done with the StandardScaler() from the sklearn package). Contextual regression is robust against noise of random value as we have demonstrated in the paper, but not against noise of constant large value. In order to understand this suggestion, consider the following situation:
-
-Suppose we have a set of data points and their corresponding target values and features that are unnormalized:
-
-| Data Points | Target Value | Feature Vector |
-| ----------- | ------------ | -------------- | 
-| A           | 5            | (1, 11, 5, 8)  |
-| B           | 8            | (4, 41, 2, -3) |
-| C           | 7            | (3, 21, 3, -1) |
-| D           | -5           | (9, 0, 2, -7)  |
-
-We can train a neural network which represents a function f(x) that maps the feature vectors to their corresponding target value of the data point. Now suppose we add a noise feature that has value 999 in all the data points:
-
-| Data Points | Target Value f(x) | Feature Vector (x)  |
-| ----------- | ----------------- | ------------------- | 
-| A           | 5                 | (1, 11, 5, 8, 999)  |
-| B           | 8                 | (4, 41, 2, -3, 999) |
-| C           | 7                 | (3, 21, 3, -1, 999) |
-| D           | -5                | (9, 0, 2, -7, 999)  |
-
-Then, if we apply the contextual regression with Lasso constraint, the embedding model will have a global minimum when outputing (0, 0, 0, 0, f(x)/999) as context weight, which is shown in the following table:
-
-| Data Points | Target Value f(x) | Feature Vector (x)  | Context Output        |
-| ----------- | ----------------- | ------------------- | --------------------- | 
-| A           | 5                 | (1, 11, 5, 8, 999)  | (0, 0, 0, 0, 5/999)   |
-| B           | 8                 | (4, 41, 2, -3, 999) | (0, 0, 0, 0, 8/999)   |
-| C           | 7                 | (3, 21, 3, -1, 999) | (0, 0, 0, 0, 7/999)   |
-| D           | -5                | (9, 0, 2, -7, 999)  | (0, 0, 0, 0, -5/999)  |
-
-Thus, this situation has yielded a model that solely focus on noise and defeats the purpose of contextual regression. Standardizing the data will greatly reduce the effect of noises with constant value since they have very low variance across data points.
+Standardizing the features is strongly recommended for the generation of interpretable results (This can be easily done with the StandardScaler() from the sklearn package). 
