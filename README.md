@@ -96,4 +96,4 @@ I listed some caveats for you to avoid, so that you won't get frustrated using m
 
 In some cases, scaling of the data or the change of some hyperparameters is needed to resolve the vanishing or exploding gradient. Reducing the number of neurons or applying regularization on the weights in the network is recommended. This practice can reduce the flexibility of the embedding function and make the results more robust and succinct.
 
-Standardizing the features is strongly recommended for the generation of interpretable results (This can be easily done with the StandardScaler() from the sklearn package). 
+Standardizing the features is strongly recommended to makes the learning easier (This can be easily done with the StandardScaler() from the sklearn package). 
