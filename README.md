@@ -1,6 +1,9 @@
 # Contextual_Regression
 This project is related to paper: Contextual Regression: An Accurate and Conveniently Interpretable Nonlinear Model for Mining Discovery from Scientific Data (https://arxiv.org/abs/1710.10728), please contact chl556@ucsd.edu if you have any questions.
 
+# Version of Tensorflow
+This project is written with tensorflow 1.2. But the latest version should work fine.
+
 # How to Run the Simulated Data Code
 We have provided the code to run simulated data in the folder Ground_Truth_Test_Base. In order to run it, first open the file Run_Ground_Truth_Test.bash. In which you will see the following line:
 ```bash
